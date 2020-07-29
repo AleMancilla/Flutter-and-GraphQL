@@ -5,7 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 final HttpLink httplink = HttpLink(uri: "https://guimy-data.herokuapp.com/v1/graphql",
   headers: {
     "content-type"          : "application/json",
-    "x-hasura-admin-secret" : "NNO PUEDES VER ESTO"
+    "x-hasura-admin-secret" : "1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik,9ol.0p"
   }
 ); 
 void main() => runApp(MyApp());

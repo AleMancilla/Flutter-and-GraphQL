@@ -5,16 +5,33 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 class HomePage extends StatelessWidget {
 
   final String setMetacion = """
-  mutation  NewUser {
+  mutation insertUser(\$country : String, \$email: String, \$name: name, \$pass:String, \$phone:String) {
   insert_users_one(object:{
-    name : "FLUTTER"
-    country : "Peru"
-    email : "email@jo.com"
-  }) {
+    country : \$country
+    email: \$email
+    name : \$name
+    password : \$pass
+    phone : \$phone
+  }){
     id
-    name
-    country
     email
+    name
+  }
+}
+  """;
+
+    final String setMet = """
+  mutation insertUser {
+  insert_users_one(object:{
+    country : "XXXdfg"
+    email: "XXXXdfdssdf"
+    name : "XXXXsdfsdfsdf"
+    password : "XXXsdfsdfsd"
+    phone : "XXXsdfsdfsdf"
+  }){
+    id
+    email
+    name
   }
 }
   """;
@@ -49,39 +66,20 @@ class HomePage extends StatelessWidget {
         RunMutation runMutation,
         QueryResult result,
       ) {
-        // return FloatingActionButton(
-        //   onPressed: () => runMutation({
-        //     // 'starrableId': <A_STARTABLE_REPOSITORY_ID>,
-        //   }),
-        //   tooltip: 'Star',
-        //   child: Icon(Icons.star),
-        // );
-
-    //runMutation({});
-    print("###################### object");
-    print(result.data); 
-    print("###################### object");
-    return Text("EXITO");
-    // return Text(result.data.insert_users_one["name"]);
-  },
-);
-    // Query(
-    //   options: QueryOptions(
-    //     documentNode: gql(getQuery)
-    //   ), 
-    //   builder: (QueryResult result, {fetchMore , refetch}){
-    //     if (result.hasException) {
-    //         return Text(result.exception.toString());
-    //     }
- 
-    //     if (result.loading) {
-    //       return Text('Loading');
-    //     }
-
-    //     final usuario = result.data["users"];
-    //     print(" - ######## ${usuario.toString()}");
-    //     return Text(usuario[0]["name"].toString());
-    //   },
-    // );
+        return FloatingActionButton(
+          onPressed: () => runMutation(
+            {
+              "country": "PRUEBA",
+              "email": "PRUEBA",
+              "name": "PRUEBA",
+              "pass": "PRUEBA",
+              "phone": "PRUEBA"
+            }
+          ),
+          tooltip: 'Star',
+          child: Icon(Icons.star),
+        );
+      },
+    );
   }
 }
