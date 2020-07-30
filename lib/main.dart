@@ -1,32 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_and_graphql/HomePage.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+// import 'package:graphql_flutter/graphql_flutter.dart';
 
-final HttpLink httplink = HttpLink(uri: "https://guimy-data.herokuapp.com/v1/graphql",
-  headers: {
-    "content-type"          : "application/json",
-    "x-hasura-admin-secret" : "1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik,9ol.0p"
-  }
-); 
+
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final ValueNotifier<GraphQLClient> client = new ValueNotifier<GraphQLClient>(
-      GraphQLClient(
-        cache: InMemoryCache(),
-        link: httplink, 
-      )
-    );
 
-    return GraphQLProvider(
-      client: client,
-      child: MaterialApp(
+    return MaterialApp(
         title: 'Material App',
         home: HomePage()
-      ),
+      
     );
   }
 }
